@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />	 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/Additional.css" rel="stylesheet" type="text/css">
+
+  <!-- Owl Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+
+  <!-- javascript -->    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>    
+  
+  <!--Additional javascript-->
+
+  <script type="text/javascript">
+
+    function GoogleForm() {
+  
+      var field1 = $("[name='Name']").val();
+      var field2 = $("[name='Comment']").val();
+  
+      $.ajax({
+       
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSfLp8lDqaOzTuMYMPUr9l4P-_sYGsmJDA5hFniDCZU-8nB37g/formResponse", //Google Form 裡面的 
+        data: {
+        "entry.2110381021":field1,
+        "entry.1942222886":field2
+        },
+  
+        type: "POST",
+        dataType: "xml",
+       
+        statusCode: {
+        0: function() {
+         alert("已送出!");//完成送出表單的警告視窗
+         window.location.assign("MessageBoard.html");//完成送出表單後的重新導向
+        },
+        200: function() {
+         alert("已送出!");//完成送出表單的警告視窗
+         window.location.assign("MessageBoard.html");//完成送出表單後的重新導向
+        }
+       }
+      });
+     }
+   
+    </script>
+  
+  <script>
+
+    function GetUrlVar(VarName) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + VarName + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+        if (results == null)
+            return "";
+        else
+            return results[1];
+    }
+    var n = decodeURIComponent(GetUrlVar('id'))
+
+    // https://developers.google.com/chart/interactive/docs/quick_start
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+    // Set a callback to run when the Google Visualization API is loaded.	
+  	google.charts.setOnLoadCallback(init);
+	
+    function init() {
+        // 這個例子使用的試算表是 https://docs.google.com/spreadsheets/d/1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk/copy
+        // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
+        // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
+        // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
+        var url =
+        'https://docs.google.com/spreadsheets/d/1TqOD7s0UHt2q5qTrneqeg5QC0Bf2rvVdBOLi0FOoShs/gviz/tq?sheet=testing';
+        var query = new google.visualization.Query(url);
+        query.setQuery("select *");
+        query.send(processSheetsData);
+    }    
+
+    function processSheetsData(response) {
+      n = Number(decodeURIComponent(GetUrlVar('id'))) - 1;
+      var data = response.getDataTable();
+      var columns = data.getNumberOfColumns();
+      var rows = data.getNumberOfRows();
+      var str = "";
+      console.log(n)
+      
+      str = str + ` <div class="container">
+                      <div class="section" style="padding:0px">
+                        <div class="row">
+                          <div class="col s12 m6">
+                            <img src="${data.getFormattedValue(n,1)}" style="object-fit: cover; width: 100%; height:242.66px; border-radius: 10px;">
+                            <h3 style="color:white">${data.getFormattedValue(n,3)}</h3>
+                            <p style="color:white">${data.getFormattedValue(n,4)}</p>
+                          </div>
+
+                          <div class="col s12 m6">
+                            ${data.getFormattedValue(n,6)}
+                            <p style="color:white">${data.getFormattedValue(n,5)}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>`;
+            
+        document.getElementById('id').innerHTML = str;
+        
+    }
+  </script>
+  <!--End of additional javascript-->
+
+</head>
+<body style="background-color: black;">
+  
+  <!--Navigation and Side Navbars--> 
+  <div style="position: sticky; top: 0px; z-index: 9999;">
+    <nav class="black" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="Main.html" class="brand-logo" style="font-family:'Papyrus'; font-weight:bold; color:white; font-size: medium">
+          Sekiro:Shadow Die Twice
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="NEWS.html" style="color:white; font-family:'Papyrus'; font-weight:bold">NEWS</a></li>
+          <li><a href="MessageBoard.html" style="color:white; font-family:'Papyrus'; font-weight:bold">MessageBoard</a></li>
+        </ul>
+  
+        <ul id="nav-mobile" class="sidenav" style="background-color: black;">
+          <li><a href="NEWS.html" style="font-family:'Papyrus'; font-weight:bold; color:white">NEWS</a></li>
+          <li><a href="MessageBoard.html" style="font-family:'Papyrus'; font-weight:bold; color:white">MessageBoard</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons" style="color:whitesmoke">menu</i></a>
+      </div>
+    </nav>
+  </div>
+  <!--End of Navigations-->
+
+  <!--Content 1-->
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <div id="demo"></div>
+      </div>
+    </div>
+  </div>  
+  <br>
+  <br>
+  <!--End of Content1-->
+	
+  <!--Content2-->
+  <div id="id"></div>
+  <!--End of Content2-->
+
+  <hr style="color:white">
+  
+  <!--Footer-->
+  <footer class="page-footer teal" style="background-image:url('pictures/black.png')">
+    <div class="container">
+      <div class="row">
+
+        <div class="col l6 s12" style=" border: solid; border-color: white; border-width: 1px;">
+        
+          <h4 class="white-text" style="margin: 0px;">FROM SOFTWARE</h4>
+          <p>Company Name:　FromSoftware, Inc.<br>
+             Date of Foundation:　November 1, 1986<br>
+             Adddress:　Tokyo Head Office　Shinjuku Front Tower. 21-1,Kita-Shinjuku 2-chome,Shinjuku-ku,Tokyo 169-0074 Japan
+            Fukuoka Studio　Hakata Kuramoto OtaBldg. 8F 2-1 Narayamachi Hakata-ku, Fukuoka 812-0023 Japan</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481.6612596471778!2d139.68892976485992!3d35.69625726867713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f31aee607a17%3A0xb19b1bca69774bb8!2sFrom%20Software!5e0!3m2!1szh-TW!2stw!4v1703695318130!5m2!1szh-TW!2stw" width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <div class="col l6 s12" style=" border: solid; border-color: white; border-width: 1px">
+        
+          <div class="container">
+            <div class="section" style="padding:0px">
+              <div class="row" >
+                <h3 style="color:white; display:flex; justify-content:center; font-family:'Papyrus'">Leave Comments</h3>
+                <br><br><br><br><br><br><br><br>
+                <form action="javascript:GoogleForm();">
+                  <fieldset style="width:200px">
+                    <legend style="color:white; font-family:'Papyrus'">Name</legend>
+                    <input type="text" name="Name" style="color:white">
+                  </fieldset>
+                  <fieldset>
+                    <legend style="color:white; font-family:'Papyrus'">Comments</legend>
+                    <input type="text" name="Comment" style="color:white">
+                  </fieldset>
+                  <br>
+                  <button type="submit">Enter</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+  <!--End of footer-->
+
+  <!--Script that has to be put on the end of body-->
+  <script>
+		$(document).ready(function() {
+		  var owl = $('.owl-carousel');
+		  owl.owlCarousel({
+			items: 3,
+			loop: true,
+			margin: 15,
+			autoplay: true,
+			autoplayTimeout: 1500,
+			autoplayHoverPause: true,
+		  });
+		})
+				
+		var images =  new Array();
+		images[0] = "pictures/Gyobu.jpg";
+		images[1] = "pictures/Lady Butterfly.png";
+		images[2] = "pictures/Genichro.jpg";
+		images[3] = "pictures/Guardian ape.jpg";
+		images[4] = "pictures/Owl.jpg";
+		images[5] = "pictures/800BCN.jpg";
+		images[6] = "pictures/Sakura Dragon.jpg";
+		images[7] = "pictures/Oni.jpg";
+		images[8] = "pictures/ishin.jpg"
+
+
+    var Name = new Array()
+    Name[0] = "鬼庭刑部雅孝"
+    Name[1] = "まぼろしお蝶"
+    Name[2] = "葦名弦一郎" 
+    Name[3] = "獅子猿"
+    Name[4] = "大忍び 梟"
+    Name[5] = "破戒僧"
+    Name[6] = "桜竜"
+    Name[7] = "怨嗟の鬼"
+    Name[8] = "葦名 一心"
+    
+		str = '<div class="owl-carousel owl-theme">';
+		for (i=0 ; i<=8 ; i++)
+			{
+			str += '<div class="item" style="object-fit: contain">';
+			str += 	'<a href="Bosses.html?id='+ (i+1) +'"><img src="' + images[i] + '" style="border-radius:20px; min-height:100px; max-height:160px"></a>';
+      str +=  '<span class="card-title" style="color:white; font-weight:bold; font-size:16px">' + Name[i] +'</span>'
+			str += '</div>';
+			}
+		str += '</div>';
+		document.getElementById("demo").innerHTML = str;    
+	</script>
+  <!--End-->
+
+  </body>
+</html>

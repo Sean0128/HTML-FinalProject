@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>JS Final</title>
+
+  <!-- CSS  -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />	 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/Additional.css" rel="stylesheet" type="text/css">
+
+  <!--Built Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  
+  <!--Additional Scripts-->
+  
+  <script type="text/javascript">
+
+    function GoogleForm() {
+  
+      var field1 = $("[name='Name']").val();
+      var field2 = $("[name='Comment']").val();
+  
+      $.ajax({
+       
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSfLp8lDqaOzTuMYMPUr9l4P-_sYGsmJDA5hFniDCZU-8nB37g/formResponse", //Google Form 裡面的 
+        data: {
+        "entry.2110381021":field1,
+        "entry.1942222886":field2
+        },
+  
+        type: "POST",
+        dataType: "xml",
+       
+        statusCode: {
+        0: function() {
+         alert("已送出!");//完成送出表單的警告視窗
+         window.location.assign("MessageBoard.html");//完成送出表單後的重新導向
+        },
+        200: function() {
+         alert("已送出!");//完成送出表單的警告視窗
+         window.location.assign("MessageBoard.html");//完成送出表單後的重新導向
+        }
+       }
+      });
+     }
+   
+  </script>
+
+  <script>
+    i = -1;
+    s = " ";
+    button = "";
+    Pictures = ['pictures/Maintenance.jpg',
+                'pictures/Maintenance.jpg',
+                'pictures/Maintenance.jpg',
+                'pictures/Maintenance.jpg',
+                'pictures/Update.jpg',
+                'pictures/Survey.jpg',
+                'pictures/Stream.jpg',
+                'pictures/GOTY PS4.jpg'];
+
+    NEWS_Address = ['https://www.sekiro.jp/news_detail_220830_01.html',
+                    'https://www.sekiro.jp/news_detail_220517_01.html',
+                    'https://www.sekiro.jp/news_detail_211020_01.html',
+                    'https://www.sekiro.jp/news_detail_210818_01.html',
+                    'https://www.sekiro.jp/news_detail_201118_01.html',
+                    'https://www.sekiro.jp/news_detail_201109_01.html',
+                    'https://www.sekiro.jp/news_detail_201029_01.html',
+                    'https://www.sekiro.jp/news_detail_200730_01.html'];
+
+    Titles = ['臨時サーバーメンテナンスのお知らせ',
+              '臨時サーバーメンテナンスのお知らせ',
+              '臨時サーバーメンテナンスのお知らせ',
+              '臨時サーバーメンテナンスのお知らせ',
+              'アップデートファイルver1.06配信のお知らせ',
+              '製品アンケート実施中',
+              '機能追加アップデート配信開始、GAME OF THE YEAR EDITION発売',
+              'GAME OF THE YEAR EDITION(PS4)発売決定']
+
+    function myfunction(y) {
+    i = i + y;
+
+    if (i <= 7){
+
+      s += '<div class="col s12 m4">'
+      s += '<div class="card">'
+      s += '<div class="card-image">'
+      s += '<a href ="' + NEWS_Address[i] + '"><img src="' + Pictures[i] +'"></a>'
+      s += '</div>'
+      s += '<div class="card-content" style="word-wrap:break-word; padding-top:12px; padding-bottom:12px; background-color:black;     height:80px">'
+      s += '<p style="color:white">'+ Titles[i] + '</p>'
+      s += '</div>'
+      s += '<div class="card-action" style="background-color:black">'
+      s += '<a href="' + NEWS_Address[i] +'">Check detail</a>'
+      s += '</div>'
+      s += '</div>'
+      s += '</div>'
+
+      document.getElementById('demo').innerHTML = s;
+      }
+    
+    }
+
+  </script>
+  <!--End of Additional Scripts-->
+
+</head>
+
+<body style="background-color:black">  
+
+  <!--Alert-->
+  <script>
+    confirm("注意!，本頁面所有連結都將導至外部網站，非本專案之內容")
+  </script>
+
+  <!--Navigation and Side Navbars--> 
+  <div style="position: sticky; top: 0px; z-index: 9999;">
+    <nav class="black" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="Main.html" class="brand-logo" style="font-family:'Papyrus'; font-weight:bold; color:white; font-size: medium">
+          Sekiro:Shadow Die Twice
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="NEWS.html" style="color:white; font-family:'Papyrus'; font-weight:bold">NEWS</a></li>
+          <li><a href="MessageBoard.html" style="color:white; font-family:'Papyrus'; font-weight:bold">MessageBoard</a></li>
+        </ul>
+  
+        <ul id="nav-mobile" class="sidenav" style="background-color: black;">
+          <li><a href="NEWS.html" style="font-family:'Papyrus'; font-weight:bold; color:white">NEWS</a></li>
+          <li><a href="MessageBoard.html" style="font-family:'Papyrus'; font-weight:bold; color:white">MessageBoard</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons" style="color:whitesmoke">menu</i></a>
+      </div>
+    </nav>
+  </div>
+  <!--End of Navigations-->
+  
+  <!--Content 1-->
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <br>
+        <div style="display:flex; justify-content:center">
+          <h3 style="color:white; margin:0px; font-family:'Papyrus';">NEWS</h3>
+        </div>
+        <br>
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <a href="https://www.sekiro.jp/news_detail_230926_01.html"><img src="pictures/FirstFight.jpg" style="height:200px"></a>
+            </div>
+            <div class="card-content" style="word-wrap:break-word; padding-top:12px; padding-bottom:12px; background-color:black;     height:80px">
+              <p style="color:white">世界累計販売本数1,000万本突破</p>
+            </div>
+            <div class="card-action" style="background-color:black">
+              <a href="https://www.sekiro.jp/news_detail_230926_01.html">Check detail</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <a href="https://www.sekiro.jp/news_detail_230517_01.html"><img src="pictures/Maintenance.jpg" style="height:200px"></a>
+            </div>
+            <div class="card-content" style="word-wrap:break-word; padding-top:12px; padding-bottom:12px; background-color:black;     height:80px">
+              <p style="color:white">臨時サーバーメンテナンスのお知らせ</p>
+            </div>
+            <div class="card-action" style="background-color:black">
+              <a href="https://www.sekiro.jp/news_detail_230517_01.html">Check detail</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <a href="https://www.sekiro.jp/news_detail_221108_01.html"><img src="pictures/Maintenance.jpg" style="height:200px"></a>
+            </div>
+            <div class="card-content" style="word-wrap:break-word; padding-top:12px; padding-bottom:12px; background-color:black;     height:80px">
+              <p style="color:white">臨時サーバーメンテナンスのお知らせ</p>
+            </div>
+            <div class="card-action" style="background-color:black">
+              <a href="https://www.sekiro.jp/news_detail_221108_01.html">Check detail</a>
+            </div>
+          </div>
+        </div>
+        <div id="demo">
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <a href="javascript:myfunction(1);" style="font-family:'Geneva'"><button class="ad_button-28" role="button">NEXT</button></a>
+  <!--End of content 1-->
+
+  <hr style="color:white">
+  
+  <!--Footer-->
+  <footer class="page-footer teal" style="background-image:url('pictures/black.png')">
+    <div class="container">
+      <div class="row">
+
+        <div class="col l6 s12" style=" border: solid; border-color: white; border-width: 1px;">
+        
+          <h4 class="white-text" style="margin: 0px;">FROM SOFTWARE</h4>
+          <p>Company Name:　FromSoftware, Inc.<br>
+             Date of Foundation:　November 1, 1986<br>
+             Adddress:　Tokyo Head Office　Shinjuku Front Tower. 21-1,Kita-Shinjuku 2-chome,Shinjuku-ku,Tokyo 169-0074 Japan
+            Fukuoka Studio　Hakata Kuramoto OtaBldg. 8F 2-1 Narayamachi Hakata-ku, Fukuoka 812-0023 Japan</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481.6612596471778!2d139.68892976485992!3d35.69625726867713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f31aee607a17%3A0xb19b1bca69774bb8!2sFrom%20Software!5e0!3m2!1szh-TW!2stw!4v1703695318130!5m2!1szh-TW!2stw" width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <div class="col l6 s12" style=" border: solid; border-color: white; border-width: 1px">
+        
+          <div class="container">
+            <div class="section" style="padding:0px">
+              <div class="row" >
+                <h3 style="color:white; display:flex; justify-content:center; font-family:'Papyrus'">Leave Comments</h3>
+                <br><br><br><br><br><br><br><br>
+                <form action="javascript:GoogleForm();">
+                  <fieldset style="width:200px">
+                    <legend style="color:white; font-family:'Papyrus'">Name</legend>
+                    <input type="text" name="Name" style="color:white">
+                  </fieldset>
+                  <fieldset>
+                    <legend style="color:white; font-family:'Papyrus'">Comments</legend>
+                    <input type="text" name="Comment" style="color:white">
+                  </fieldset>
+                  <br>
+                  <button type="submit">Enter</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+  <!--End of footer-->
+
+  </body>
+</html>
