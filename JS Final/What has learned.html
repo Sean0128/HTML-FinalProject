@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />	 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/Additional.css" rel="stylesheet" type="text/css">
+
+  <!-- javascript -->    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>    
+  
+</head>
+<body style="background-color: black;">
+  
+  <!--Navigation and Side Navbars--> 
+  <div style="position: sticky; top: 0px; z-index: 9999;">
+    <nav class="black" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="Main.html" class="brand-logo" style="font-family:'Papyrus'; font-weight:bold; color:white; font-size: medium">
+          Sekiro:Shadow Die Twice
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="NEWS.html" style="color:white; font-family:'Papyrus'; font-weight:bold">NEWS</a></li>
+          <li><a href="MessageBoard.html" style="color:white; font-family:'Papyrus'; font-weight:bold">MessageBoard</a></li>
+          <li><a href="What has learned.html" style="color:white; font-family:'Papyrus'; font-weight:bold">What has learned</a></li>
+        </ul>
+  
+        <ul id="nav-mobile" class="sidenav" style="background-color: black;">
+          <li><a href="NEWS.html" style="font-family:'Papyrus'; font-weight:bold; color:white">NEWS</a></li>
+          <li><a href="MessageBoard.html" style="font-family:'Papyrus'; font-weight:bold; color:white">MessageBoard</a></li>
+          <li><a href="What has learned.html" style="color:white; font-family:'Papyrus'; font-weight:bold">What has learned</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons" style="color:whitesmoke">menu</i></a>
+      </div>
+    </nav>
+  </div>
+  <!--End of Navigations-->
+
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <div style="display: flex; justify-content: center">
+          <h3 style="color:white; font-family: 'Papyrus';">First Week</h3>
+        </div>
+        <div class="col s12 m8">
+          <span style="color:white; font-family: 'sans-serif'; word-break: normal;">
+            這兩周所學到的語法整理:<br>
+            alert():<br>
+            　　當程式執行到aler()的時候會彈出一個提示的視窗，視窗裡的內容為寫在aler()括弧裡的東西，語法:alert("請輸入內容")<br><br>
+            comfirm():<br>
+            　　與alert()相似，但需要使用者點擊確認或取消，多會搭配if條件判斷式使用。如右圖，螢幕上會創建一個上面寫著Try it 的按鈕，當按下確認後p標籤會執行script裡面的程式，如果按確認，txt就會等於You pressed ok!。<br><br>
+            script:<br>
+            　　script 內的東西要用id來導入，在script的最後加入document.getElementById("想要命名的id") = "function裡面設定的變數"，然後在想要使用script的標籤後面加入 = "想要命名的id"，就能夠讓標籤內的東西照著script做。參考圖(一)<br><br>
+            function():<br>
+            　　function 類似python的def，語法為：function FunctionName() {}，大括弧內就是function的主要內容，而function的小括弧內可以設定一個變數，ex：function FunctionName(y){}，然後可以再將javascript:FunctionName("number")放進a標籤改變變數的值，參考圖(二)
+          </span>
+        </div>
+        <div class="col s12 m4">
+          <img src="review pictures/W2P1.png" style="width: 100%;">
+          <img src="review pictures/W2P2.png" style="width: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <hr style="color:white">
+
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <div style="display: flex; justify-content: center">
+          <h3 style="color:white; font-family: 'Papyrus';">MaterializeCSS</h3>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <div class="col s12 m12">
+
+              <span style="color:white; font-family: 'sans-serif'; word-break: normal;">
+                Materialize CSS setup:<br>
+                　　1.將下方HTML Setup的程式碼複製進HTML檔案中。<br>
+                <img src="review pictures/W3P1.png" style="width: 80%"><br>
+                　　2.在Getting Started 的頁面中下載Materialize CSS資源包，或是使用CDN版本將link複製進head標籤中。<br>
+                <img src="review pictures/W3P2.png" style="width: 100%"><br>
+                Materialize practice:<br>
+                　　首先到Componets裡的button頁面，將Raised 裡面的程式碼複製下來放進body裡。<br>
+                <img src="review pictures/W3P3.png" style="width: 100%"><br>
+                　　以下是這段程式的輸出:<br>
+                <img src="review pictures/W3P4.png" style="width: 40%"><br>
+                　　class是Materialize CSS其中的一個分類，運用class就能讓多個標籤有一樣的設計樣式，達到節省空間以及避免多次撰寫同樣程式碼的繁複程序。其中i標籤的class會呈現google icon資料庫中指定的icon，可以藉由改變class後面雙引號框起來的程式碼以及i標籤框起來的文字改變成不同的圖樣。Ex:<br> 
+                <img src="review pictures/W3P5.jpg" style="width: 100%"><br>
+                　　我們可以把i標籤的夾起來的文字改成arrow_back，就能改變成向左箭頭的圖樣，如果要改變成不同的圖樣，只要到Google Materialize Icons的網站並將想要的圖片的名字複製到i標籤之中，就能把圖片改掉，但是標籤的class一定要包含"meterial-icon"，否則就無法正常呈現。
+              </span>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <hr style="color:white">
+
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <div style="display: flex; justify-content: center">
+          <h3 style="color:white; font-family: 'Papyrus';">URL parameters parsing</h3>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <div class="col s12 m12">
+
+              <span style="color:white; font-family: 'sans-serif'; word-break: normal;">
+                解析網址參數:<br>
+                　　1.將下方HTML的程式碼複製進HTML檔案中。<br>
+                <img src="review pictures/W4P1.png" style="width: 100%"><br>
+                　　2.在HTML網址的最後面打上?id='你想輸入的字串'，n就會變成"="後面的字串，然後就能進行更多的動作，EX:。<br>
+                <img src="review pictures/W4P2.png" style="width: 100%"><br>
+                <img src="review pictures/W4P3.png" style="width: 100%"><br>
+                　　用Number()把decodeURIComponent(GetUrlVar('id'))包起來，n會從字串型態轉為數字型態。然後就可以套用到其他程式碼中，例如這裡使用google試算表做資料庫，${data.getFormattedValue(n,0)}能夠讀取第一列第n格的資料，然後根據程式碼顯示出來。
+
+              </span>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  <hr style="color:white">
+
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <div style="display: flex; justify-content: center">
+          <h3 style="color:white; font-family: 'Papyrus';">Google Forms</h3>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <div class="col s12 m12">
+
+              <span style="color:white; font-family: 'sans-serif'; word-break: normal;">
+                　　在HTML的程式碼中，可以利用Javascript語法連結表單，再把輸入表單的內容放在google sheet當中，把google sheet當成簡單的資料庫，要達到這個目標首先要到google 表單的地方創建一個表單，並設定讓表單的結果存放在google sheet中。<br>
+                <img src="review pictures/W5P1.jpg" style="width: 100%;">
+                <img src="review pictures/W5P2.png" style="width: 100%;">
+                　　然後再將範例程式碼複製進HTML檔案中。<br>
+                <img src="review pictures/W5P3.png" style="width: 100%;">
+                　　其中&entry=""的部分代表回應的欄位，可以從表單中獲取。<br>
+                <img src="review pictures/W5P4.png" style="width: 100%;">
+                <img src="review pictures/W5P5.png" style="width: 100%;">
+                將取得的連結及entry替換至程式碼中，就可以得到送出表單的程式。
+              </span>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <hr style="color:white">
+
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <div style="display: flex; justify-content: center">
+          <h3 style="color:white; font-family: 'Papyrus';">Google Maps</h3>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <div class="col s12 m12">
+
+              <span style="color:white; font-family: 'sans-serif'; word-break: normal;">
+                　　在HTML的程式碼中，最簡單使用google map的方法就是直接查詢想要的地方，然後點擊分享，裡面有個嵌入地圖，再把程式碼複製進HTML檔案中<br>
+                <img src="review pictures/W6P1.png" style="width: 100%;">
+                <img src="review pictures/W6P2.png" style="width: 100%;">
+                　　這段程式碼的輸出範例:<br>
+                <img src="review pictures/W6P3.png" style="width: 100%;">
+                　　這樣就能達到在HTML中嵌入google map的作法，後續可以利用style調整物件的大小與位置等等，放在指定的位置。
+              </span>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  <hr style="color:white">
+
+  <div class="container">
+    <div class="section" style="padding:0px">
+      <div class="row" style="margin:0px">
+        <div style="display: flex; justify-content: center">
+          <h3 style="color:white; font-family: 'Papyrus';">Pixnet API</h3>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <div class="col s12 m12">
+
+              <span style="color:white; font-family: 'sans-serif'; word-break: normal;">
+                　　要呼叫痞客邦的看板資料，要利用JSON才能達成，首先先將程式的範例碼複製進HTML檔案當中。<br>
+                <img src="review pictures/W7P1.png" style="width: 100%;">
+                　　可以藉由修改看板的名稱以及更改page和per_page的數量改變程式的輸出。<br>
+                <img src="review pictures/W7P2.png" style="width: 100%;">
+                　　也可以修改下面的程式碼，讓變數out的程式碼更完整，就能讓輸出更加美觀。<br>
+                <img src="review pictures/W7P3.png" style="width: 100%;">
+              </span>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <hr style="color:white">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <!--Footer-->
+  <footer class="page-footer teal" style="background-image:url('pictures/black.png')">
+    <div class="container">
+      <div class="row">
+
+        <div class="col l6 s12">
+        
+          <h4 class="white-text" style="margin: 0px;">FROM SOFTWARE</h4>
+          <p>Company Name:　FromSoftware, Inc.<br>
+             Date of Foundation:　November 1, 1986<br>
+             Adddress:　Tokyo Head Office　Shinjuku Front Tower. 21-1,Kita-Shinjuku 2-chome,Shinjuku-ku,Tokyo 169-0074 Japan
+            Fukuoka Studio　Hakata Kuramoto OtaBldg. 8F 2-1 Narayamachi Hakata-ku, Fukuoka 812-0023 Japan</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481.6612596471778!2d139.68892976485992!3d35.69625726867713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f31aee607a17%3A0xb19b1bca69774bb8!2sFrom%20Software!5e0!3m2!1szh-TW!2stw!4v1703695318130!5m2!1szh-TW!2stw" width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <div class="col l6 s12">
+        
+          <div class="container">
+            <div class="section" style="padding:0px">
+              <div class="row" >
+                <h3 style="color:white; display:flex; justify-content:center; font-family:'Papyrus'">Leave Comments</h3>
+                <br><br><br><br><br><br><br><br>
+                <form action="javascript:GoogleForm();">
+                  <fieldset style="width:200px">
+                    <legend style="color:white; font-family:'Papyrus'">Name</legend>
+                    <input type="text" name="Name" style="color:white">
+                  </fieldset>
+                  <fieldset>
+                    <legend style="color:white; font-family:'Papyrus'">Comments</legend>
+                    <input type="text" name="Comment" style="color:white">
+                  </fieldset>
+                  <br>
+                  <button type="submit">Enter</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+  <!--End of footer-->
+</body>
+</html>
